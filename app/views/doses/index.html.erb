@@ -1,0 +1,30 @@
+<% @cocktail.ingredients.each do |ingredient| %>
+  <p><%= ingredient.name %></p>
+<%= simple_form_for(@cocktail) do |f| %>
+<%= f.input :name %>
+<%= f.input :ingredients, collection: @ingredients %>
+
+<%= f.submit %>
+<% end %>
+
+
+<table>
+  <div class="container">
+    <div class="row">
+      <div class="col_6">
+        <thead>
+          <tr>
+            <h2><th>Cocktails</th></h2>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cocktails.each do |cocktail|  %>
+            <tr>
+              <td><%= link_to cocktail.name, cocktail_path(cocktail) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </div>
+    </div>
+  </div>
+</table>
